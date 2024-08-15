@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,8 @@ public class SearchTest {
     }
 
     @Test
+    @Tag("BUSQUEDA")
+    @Tag("SMOKE")
     public void BusquedaExitosa_Grecia() throws InterruptedException {
         SearchPage searchPage = new SearchPage(driver, wait);
         searchPage.writeSearch("Paros");
@@ -33,6 +36,8 @@ public class SearchTest {
     }
 
     @Test
+    @Tag("BUSQUEDA")
+    @Tag("REGRESSION")
     public void BusquedaExitosa_Uruguay() throws InterruptedException {
         SearchPage searchPage = new SearchPage(driver, wait);
         searchPage.writeSearch("Punta del este");
