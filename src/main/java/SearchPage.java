@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchPage extends BasePage{
 
@@ -12,8 +13,8 @@ public class SearchPage extends BasePage{
 
 
 
-    public SearchPage(WebDriver driver) {
-        super(driver);
+    public SearchPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, null);
     }
 
     public void writeSearch(String ciudad) throws InterruptedException {
