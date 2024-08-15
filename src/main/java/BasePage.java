@@ -8,34 +8,17 @@ public class BasePage {
 
     protected BasePage(WebDriver driver) { this.driver = driver; }
 
-<<<<<<< HEAD
-    public void setup() {
-        driver.manage().window().maximize();
-    }
-
-    public void url(String url) throws InterruptedException {
-        Thread.sleep(1000);
-        driver.get(url); }
-=======
     public void url(String url) {
         driver.get(url);
     }
->>>>>>> fe279fe (BeforeEach y AfterEach anotaciones)
 
     public void close() { driver.quit(); }
 
-<<<<<<< HEAD
-    protected WebElement findElement(By locator) { return driver.findElement(locator); }
-
-    protected void sendText(String inputText, By locator ) throws InterruptedException {
-        Thread.sleep(1000);
-=======
     protected WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
 
-    public void sendText(String imputText, By locator ) {
->>>>>>> fe279fe (BeforeEach y AfterEach anotaciones)
+    protected void sendText(String imputText, By locator ) {
         this.findElement(locator).clear();
         this.findElement(locator).sendKeys(imputText);
     }
@@ -45,7 +28,7 @@ public class BasePage {
         this.findElement(locator).sendKeys(key);
     }
 
-    public void click(By locator) throws InterruptedException {
+    protected void click(By locator) throws InterruptedException {
         Thread.sleep(1000);
         this.findElement(locator).click();
     }
