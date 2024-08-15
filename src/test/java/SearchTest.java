@@ -32,4 +32,23 @@ public class SearchTest {
         driver.quit();
 
     }
+
+    @Test
+    public void BusquedaExitosa_Grecia() throws InterruptedException {
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.setup();
+
+        searchPage.url("https://digital-booking-front.digitalhouse.com/");
+        Thread.sleep(1000);
+
+        searchPage.writeSearch("Paros");
+        Thread.sleep(2000);
+
+        searchPage.clickSearch();
+
+        searchPage.searchResult();
+
+        searchPage.close();
+
+    }
 }
