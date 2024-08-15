@@ -7,41 +7,38 @@ public class BasePage {
 
     public WebDriver driver;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-    }
+    protected BasePage(WebDriver driver) { this.driver = driver; }
 
     public void setup() {
-        driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
-    public void url(String url) {
-        driver.get(url);
-    }
+    public void url(String url) throws InterruptedException {
+        Thread.sleep(1000);
+        driver.get(url); }
 
-    public void close() {
-        driver.quit();
-    }
+    public void close() { driver.quit(); }
 
-    public WebElement findElement(By locator) {
-        return driver.findElement(locator);
-    }
+    protected WebElement findElement(By locator) { return driver.findElement(locator); }
 
-    public void sendText(String inputText, By locator ) {
+    protected void sendText(String inputText, By locator ) throws InterruptedException {
+        Thread.sleep(1000);
         this.findElement(locator).clear();
         this.findElement(locator).sendKeys(inputText);
     }
 
-    public void sendKey(CharSequence key, By locator) {
+    protected void sendKey(CharSequence key, By locator) throws InterruptedException {
+        Thread.sleep(1000);
         this.findElement(locator).sendKeys(key);
     }
 
-    public void click(By locator) {
+    public void click(By locator) throws InterruptedException {
+        Thread.sleep(1000);
         this.findElement(locator).click();
     }
 
-    public String getText(By locator) {
+    protected String getText(By locator) throws InterruptedException {
+        Thread.sleep(1000);
         return this.findElement(locator).getText();
     }
 

@@ -1,4 +1,7 @@
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
@@ -9,46 +12,39 @@ public class SearchTest {
 
     public WebDriver driver;
 
-    @Test
-    public void BusquedaExitosa() throws InterruptedException {
+    @BeforeEach
+    public void precondition() throws InterruptedException {
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        SearchPage searchPage = new SearchPage(driver);
 
-        driver.get("https://digital-booking-front.digitalhouse.com/");
-        Thread.sleep(1000);
-
-        WebElement searchBox = driver.findElement(By.id("ciudad"));
-        searchBox.sendKeys("Punta del Este");
-        searchBox.sendKeys(Keys.ENTER);
-
-        WebElement searchButtom = driver.findElement(By.id("btn-buscador"));
-        searchButtom.click();
-
-
-        WebElement searchOk = driver.findElement(By.xpath("//*[@id=\"68\"]/div[2]/div/div[1]"));
-        String busquedaCorrecta = searchOk.getText();
-        System.out.println(busquedaCorrecta);
-
-        driver.quit();
-
+        searchPage.setup();
+        searchPage.url("https://digital-booking-front.digitalhouse.com/");
     }
 
     @Test
     public void BusquedaExitosa_Grecia() throws InterruptedException {
         SearchPage searchPage = new SearchPage(driver);
-        searchPage.setup();
-
-        searchPage.url("https://digital-booking-front.digitalhouse.com/");
-        Thread.sleep(1000);
 
         searchPage.writeSearch("Paros");
-        Thread.sleep(2000);
-
         searchPage.clickSearch();
 
         searchPage.searchResult();
-
-        searchPage.close();
-
     }
+
+    @Test
+    public void BusquedaExitosa_Uruguay() throws InterruptedException {
+        SearchPage searchPage = new SearchPage(driver);
+
+        searchPage.writeSearch("Punta del Este");
+        searchPage.clickSearch();
+
+        searchPage.searchResult();
+    }
+
+    @AfterEach
+    public void close() {
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.close();
+    }
+
 }
