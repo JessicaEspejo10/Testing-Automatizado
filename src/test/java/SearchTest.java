@@ -15,7 +15,7 @@ public class SearchTest {
     public WebDriver driver;
     public WebDriverWait wait;
 
-    static ExtentSparkReporter info = new ExtentSparkReporter("target/Reporte.html");
+    static ExtentSparkReporter info = new ExtentSparkReporter("target/Reporte-Search.html");
     static ExtentReports extent;
 
     @BeforeAll

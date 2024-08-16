@@ -11,8 +11,6 @@ public class SearchPage extends BasePage{
 
     private By searchOk = By.className("categoria");
 
-
-
     public SearchPage(WebDriver driver, WebDriverWait wait) {
         super(driver, null);
     }
@@ -31,6 +29,4 @@ public class SearchPage extends BasePage{
         System.out.println("RESULTADO DE LA BUSQUEDA: " + res);
         return this.getText(searchOk);
     }
-
-
 }
