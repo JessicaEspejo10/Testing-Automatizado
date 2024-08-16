@@ -20,9 +20,9 @@ public class LoginPage extends BasePage {
 
     private By emailInv = By.xpath("//*[@id=\"root\"]/main/div/form/div[1]/small");
 
-    private By passwordLenght = By.xpath("//*[@id=\"root\"]/main/div/form/div[2]/small");
+    private By passwordLenght = By.className("small-feedback");
 
-    private By credentialsOk = By.className("form-feedback");
+    private By credentialsOk = By.xpath("//*[@id=\"root\"]/main/div/form/p[1]");
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
         super(driver, null);
